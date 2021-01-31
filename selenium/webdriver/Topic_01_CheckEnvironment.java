@@ -45,5 +45,4 @@ public class Topic_01_CheckEnvironment {
     public void afterClass() {
         driver.quit();
     }
-
 }
