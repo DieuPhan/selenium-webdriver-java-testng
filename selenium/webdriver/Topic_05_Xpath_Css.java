@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Topic_02_Xpath_Css {
+public class Topic_05_Xpath_Css {
     WebDriver driver;
     String URL = "http://live.demoguru99.com/";
     String firstName = "Dieu";
@@ -25,16 +25,18 @@ public class Topic_02_Xpath_Css {
     @BeforeClass
     public void beforeClass() {
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get(URL);
     }
 
     @Test
     public void TC_01_Login_With_Empty_Email_And_Password() {
+        String expectedErrorMessage = "This is a required field.";
+
+        // Navigate to Login Page
+        driver.get(URL);
         driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
         driver.findElement(By.cssSelector("button[title='Login']")).click();
-        String expectedErrorMessage = "This is a required field.";
 
         // Verify error message of Mail field
         String actualMailMessage = driver.findElement(By.id("advice-required-entry-email")).getText();
@@ -52,7 +54,7 @@ public class Topic_02_Xpath_Css {
         String expectedErrorMessage = "Please enter a valid email address. For example johndoe@domain.com.";
 
         // Navigate to Login page
-        driver.navigate().to(URL);
+        driver.get(URL);
         driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 
         // Input invalid Email and valid Password
@@ -72,7 +74,7 @@ public class Topic_02_Xpath_Css {
         String expectedErrorMessage = "Please enter 6 or more characters without leading or trailing spaces.";
 
         // Navigate to Login page
-        driver.navigate().to(URL);
+        driver.get(URL);
         driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 
         // Input valid Email and invalid Password
@@ -92,7 +94,7 @@ public class Topic_02_Xpath_Css {
         String expectedErrorMessage = "Invalid login or password.";
 
         // Navigate to Login page
-        driver.navigate().to(URL);
+        driver.get(URL);
         driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 
         // Input valid Email and invalid Password
@@ -110,7 +112,7 @@ public class Topic_02_Xpath_Css {
         String expectedSuccessMessage = "Thank you for registering with Main Website Store.";
 
         // Navigate to Signup page
-        driver.navigate().to(URL);
+        driver.get(URL);
         driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
         driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
 
@@ -138,8 +140,8 @@ public class Topic_02_Xpath_Css {
         String expectedTitle = "MY DASHBOARD";
         String expectedMessage = "Hello, "+fullName+"!";
 
-        // Navigate to Signup page
-        //driver.navigate().to(URL);
+        // Navigate to Login Page
+        driver.get(URL);
         driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
 
         // Login with created account
