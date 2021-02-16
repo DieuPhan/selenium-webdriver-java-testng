@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Topic_07_Dropdown_List {
+public class Topic_07_Default_Dropdown {
     WebDriver driver;
 
     @BeforeClass
